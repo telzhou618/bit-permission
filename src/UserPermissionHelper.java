@@ -15,7 +15,10 @@ public class UserPermissionHelper {
      */
     public static  boolean hasPermission(User user,PermissionEnum permissionEnum){
 
-        return ( user.getPermissonMask() & permissionEnum.getCode()) == permissionEnum.getCode();
+        if(user != null && permissionEnum != null){
+            return ( user.getPermissonMask() & permissionEnum.getCode()) == permissionEnum.getCode();
+        }
+        return false;
     }
 
 
@@ -26,8 +29,10 @@ public class UserPermissionHelper {
      */
     public static  void addPermission(User user,PermissionEnum...permissionEnums){
 
-        for (PermissionEnum permissionEnum : permissionEnums){
-            user.setPermissonMask(user.getPermissonMask() + permissionEnum.getCode());
+        if (user != null && permissionEnums != null && permissionEnums.length != 0){
+            for (PermissionEnum permissionEnum : permissionEnums){
+                user.setPermissonMask(user.getPermissonMask() + permissionEnum.getCode());
+            }
         }
     }
 
@@ -38,8 +43,10 @@ public class UserPermissionHelper {
      * @param permissionEnum
      */
     public static  void  removePermission(User user,PermissionEnum permissionEnum){
+        if (user != null && permissionEnum != null){
 
-        user.setPermissonMask(user.getPermissonMask() & ~permissionEnum.getCode());
+            user.setPermissonMask(user.getPermissonMask() & ~permissionEnum.getCode());
+        }
     }
 
 }
