@@ -43,8 +43,8 @@ public class UserPermissionHelper {
      * @param permissionEnum
      */
     public static  void  removePermission(User user,PermissionEnum permissionEnum){
-        if (user != null && permissionEnum != null){
 
+        if (user != null && permissionEnum != null){
             user.setPermissonMask(user.getPermissonMask() & ~permissionEnum.getCode());
         }
     }
